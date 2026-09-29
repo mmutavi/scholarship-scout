@@ -1,1 +1,1 @@
-const KEY='scout.scholarships.v2', $=s=>document.querySelector(s);
+const KEY='planner.applications.v2',$=s=>document.querySelector(s);let data=load();
