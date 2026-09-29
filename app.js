@@ -1,0 +1,1 @@
+const KEY='scout.scholarships.v1', $=s=>document.querySelector(s);let rows=read();
