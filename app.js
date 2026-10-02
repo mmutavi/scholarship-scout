@@ -7,3 +7,4 @@ function money(v){return new Intl.NumberFormat('en-US',{style:'currency',currenc
 function date(v){if(!v)return 'No date';return new Date(`${v}T12:00:00`).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})}
 function daysLeft(v){return Math.ceil((new Date(`${v}T23:59:59`)-new Date())/86400000)}
 function save(){localStorage.setItem(KEY,JSON.stringify(rows));render()}
+function render(){
