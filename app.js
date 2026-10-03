@@ -8,3 +8,4 @@ function date(v){if(!v)return 'No date';return new Date(`${v}T12:00:00`).toLocal
 function daysLeft(v){return Math.ceil((new Date(`${v}T23:59:59`)-new Date())/86400000)}
 function save(){localStorage.setItem(KEY,JSON.stringify(rows));render()}
 function render(){
+  const query=$('#search').value.trim().toLowerCase(),status=$('#filter').value,sort=$('#sort').value;
