@@ -9,3 +9,4 @@ function daysLeft(v){return Math.ceil((new Date(`${v}T23:59:59`)-new Date())/864
 function save(){localStorage.setItem(KEY,JSON.stringify(rows));render()}
 function render(){
   const query=$('#search').value.trim().toLowerCase(),status=$('#filter').value,sort=$('#sort').value;
+  const view=rows.filter(x=>(status==='all'||x.status===status)&&`${x.name} ${x.note}`.toLowerCase().includes(query));
