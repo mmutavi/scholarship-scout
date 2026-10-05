@@ -12,3 +12,4 @@ function render(){
   const view=rows.filter(x=>(status==='all'||x.status===status)&&`${x.name} ${x.note}`.toLowerCase().includes(query));
   view.sort((a,b)=>sort==='amount'?(+b.amount||0)-(+a.amount||0):sort==='name'?a.name.localeCompare(b.name):(a.deadline||'9999').localeCompare(b.deadline||'9999'));
   const soon=rows.filter(x=>x.status!=='Submitted'&&x.status!=='Awarded'&&x.deadline&&daysLeft(x.deadline)>=0&&daysLeft(x.deadline)<=30).length;
+  $('#stat-count').textContent=rows.length;$('#stat-value').textContent=money(rows.filter(x=>x.status!=='Not eligible').reduce((n,x)=>n+(+x.amount||0),0));$('#stat-soon').textContent=soon;$('#count').textContent=`${view.length} shown · ${rows.length} total`;
