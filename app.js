@@ -20,3 +20,4 @@ $('#items').addEventListener('click',e=>{const b=e.target.closest('[data-remove]
 $('#items').addEventListener('change',e=>{if(e.target.matches('[data-status]')){const row=rows.find(x=>x.id===e.target.dataset.status);if(row){row.status=e.target.value;save()}}});
 ['search','filter','sort'].forEach(id=>$('#'+id).addEventListener(id==='search'?'input':'change',render));
 $('#clear').addEventListener('click',()=>{if(rows.length&&confirm('Remove every scholarship from this device?')){rows=[];save()}});
+$('#export').addEventListener('click',()=>{const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const csv=[['Name','Amount','Deadline','Status','Official link','Notes'],...rows.map(x=>[x.name,x.amount,x.deadline,x.status,x.url,x.note])].map(r=>r.map(q).join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='scholarship-shortlist.csv';a.click();URL.revokeObjectURL(a.href)});
