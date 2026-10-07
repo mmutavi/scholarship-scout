@@ -19,3 +19,4 @@ $('#sch-form').addEventListener('submit',e=>{e.preventDefault();const f=new Form
 $('#items').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(b){rows=rows.filter(x=>x.id!==b.dataset.remove);save()}});
 $('#items').addEventListener('change',e=>{if(e.target.matches('[data-status]')){const row=rows.find(x=>x.id===e.target.dataset.status);if(row){row.status=e.target.value;save()}}});
 ['search','filter','sort'].forEach(id=>$('#'+id).addEventListener(id==='search'?'input':'change',render));
+$('#clear').addEventListener('click',()=>{if(rows.length&&confirm('Remove every scholarship from this device?')){rows=[];save()}});
