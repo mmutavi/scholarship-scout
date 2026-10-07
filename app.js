@@ -18,3 +18,4 @@ function render(){
 $('#sch-form').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);rows.push({id:crypto.randomUUID?.()||String(Date.now()),name:f.get('name').trim(),amount:f.get('amount'),deadline:f.get('deadline'),status:f.get('status'),url:f.get('url').trim(),note:f.get('note').trim()});e.currentTarget.reset();save()});
 $('#items').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(b){rows=rows.filter(x=>x.id!==b.dataset.remove);save()}});
 $('#items').addEventListener('change',e=>{if(e.target.matches('[data-status]')){const row=rows.find(x=>x.id===e.target.dataset.status);if(row){row.status=e.target.value;save()}}});
+['search','filter','sort'].forEach(id=>$('#'+id).addEventListener(id==='search'?'input':'change',render));
